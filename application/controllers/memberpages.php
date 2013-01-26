@@ -8,13 +8,14 @@ class MemberPages extends CI_Controller
 		$this->load->library('session');		
 		$this->load->library('form_validation');		
 		
-		$this->loadUserSessionData();
-		
 		$this->load->helper('html');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->model('sayings_model');
 		$this->load->model('users_model');
+		$this->load->model('pages_model');
+		
+		$this->loadUserSessionData();
 	}
 
 	public function view($page = 'home')
@@ -27,6 +28,13 @@ class MemberPages extends CI_Controller
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 		$data['sayings'] = $this->sayings_model->get_sayings();
 		$data['userLoggedIn'] = $this->session->userdata('logged_in');
+
+		$data['all_menu_items'] = array(1,2,3,4,5,6);
+		$data['selected_menu_item'] = 2;
+		
+		$data['page'] = $this->pages_model->getPage(1);
+		
+		unset($data['all_menu_items'][$data['selected_menu_item']]);
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
