@@ -8,13 +8,13 @@ class MemberPages extends CI_Controller
 		$this->load->library('session');		
 		$this->load->library('form_validation');		
 		
+		$this->loadUserSessionData();
+		
 		$this->load->helper('html');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->model('sayings_model');
 		$this->load->model('users_model');
-		
-		$this->loadUserSessionData();
 	}
 
 	public function view($page = 'home')
@@ -30,7 +30,7 @@ class MemberPages extends CI_Controller
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('pages/'.$page, $data);
-		$this->load->view('templates/footer', $data);			
+		$this->load->view('templates/footer', $data);
 	}
 	
 	private function loadUserSessionData()

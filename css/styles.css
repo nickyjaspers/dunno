@@ -54,3 +54,51 @@ div#header_static_links
 	top: 100px;
 	right:0;
 }
+
+div#MainMenuHome
+{
+	padding-top: 20px;	
+	padding-left: 80px;	
+	overflow: auto;
+}
+
+div.MainMenuHomeItem
+{
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	float:left;
+	border: 1px solid #000000;
+}
+
+div#MenuItemSelected
+{
+	overflow: auto;
+	float:left;
+}
+
+div.MenuItemSelectedItem
+{
+	width: 50px;
+	height: 50px;
+	margin: 5px;
+	float:top;
+	border: 1px solid #000000;
+}
+
+div#MenuItemSelectedWrapper
+{
+	margin-top: 20px;
+	height:350px;
+}
+
+div#MenuItemSelectContent
+{
+	 position:relative;	 
+	 float:left;
+	 top:5px;
+	 left:0;
+	 width:820px;
+	 height:335px;
+	 border: 1px solid #000000;
+}
