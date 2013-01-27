@@ -18,26 +18,31 @@ class MemberPages extends CI_Controller
 		$this->loadUserSessionData();
 	}
 
-	public function view($page = 'home')
+	public function view($page = 'home', $selectedMenuItem = 1)
 	{		
-		if ( ! file_exists('application/views/pages/'.$page.'.php'))
+		if ( ! file_exists('application/views/memberpages/'.$page.'.php'))
 		{
-			// Whoops, we don't have a page for that!
 			show_404();
 		}
+		
 		$data['title'] = ucfirst($page); // Capitalize the first letter
 		$data['sayings'] = $this->sayings_model->get_sayings();
 		$data['userLoggedIn'] = $this->session->userdata('logged_in');
 
-		$data['all_menu_items'] = array(1,2,3,4,5,6);
-		$data['selected_menu_item'] = 2;
-		
-		$data['page'] = $this->pages_model->getPage(1);
-		
-		unset($data['all_menu_items'][$data['selected_menu_item']]);
+		if ($selectedMenuItem != null)
+		{
+			$data['all_menu_items'] = $this->pages_model->getPages();
+			$data['selected_menu_item'] = $this->pages_model->getPage($selectedMenuItem);									
+			if ($data['selected_menu_item'] == null)
+			{
+				show_404();
+			}
+			$key = array_search ($data['selected_menu_item'], $data['all_menu_items']);
+			unset($data['all_menu_items'][$key]);
+		}
 		
 		$this->load->view('templates/header', $data);
-		$this->load->view('pages/'.$page, $data);
+		$this->load->view('memberpages/'.$page, $data);
 		$this->load->view('templates/footer', $data);
 	}
 	

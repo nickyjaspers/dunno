@@ -23,5 +23,10 @@ class Pages_model extends CI_Model {
 			
 		return $page;
 	}
+
+	public function getPages()
+	{
+		return $this->db->get('page')->result();
+	}
 }
 ?>

@@ -86,6 +86,11 @@ div.MenuItemSelectedItem
 	border: 1px solid #000000;
 }
 
+div#SelectedHeader
+{
+	margin-left: 60px;	
+}
+
 div#MenuItemSelectedWrapper
 {
 	margin-top: 20px;
