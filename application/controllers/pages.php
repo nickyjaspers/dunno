@@ -63,7 +63,7 @@ class Pages extends CI_Controller
 				$this->session->set_userdata('logged_in', true);
 			}			
 			//redirect to member area
-			redirect('member/home', $data);
+			redirect('member/selected/1', $data);
 		}
 	}	
 

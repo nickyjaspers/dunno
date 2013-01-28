@@ -14,6 +14,7 @@ class MemberPages extends CI_Controller
 		$this->load->model('sayings_model');
 		$this->load->model('users_model');
 		$this->load->model('pages_model');
+		$this->load->model('menuitems_model');
 		
 		$this->loadUserSessionData();
 	}
@@ -31,8 +32,8 @@ class MemberPages extends CI_Controller
 
 		if ($selectedMenuItem != null)
 		{
-			$data['all_menu_items'] = $this->pages_model->getPages();
-			$data['selected_menu_item'] = $this->pages_model->getPage($selectedMenuItem);									
+			$data['all_menu_items'] = $this->menuitems_model->getMenuItems();
+			$data['selected_menu_item'] = $this->menuitems_model->getMenuItem($selectedMenuItem);
 			if ($data['selected_menu_item'] == null)
 			{
 				show_404();
