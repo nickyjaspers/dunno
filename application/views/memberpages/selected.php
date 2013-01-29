@@ -1,3 +1,21 @@
+<script type="text/javascript">
+
+//<![CDATA[
+var selectedMenuItemController = '<?= $selected_menu_item->controller;?>';	
+//]]>
+
+$(document).ready(function() {
+	loadSelectedMenuItemContent();
+});
+
+function loadSelectedMenuItemContent()
+{
+	$.post(base_url + 'index.php/member/' + selectedMenuItemController, function(data) {
+	  $('#MenuItemSelectContent').html(data); 
+	});	
+}
+</script>
+
 <div id="SelectedHeader">
 	<?php		
 	$image_properties_selected = array(
@@ -38,6 +56,8 @@
 		?>
 			<div class="MenuItemSelectedItem">		
 				<?php
+				//$script = array('onclick' => 'moeha(); return false');
+				
 				$image_properties_one = array(
 					'src' => 'images/'.$menu_item->small_icon,
 					'alt' => $menu_item->title,
@@ -55,8 +75,6 @@
 	</div>
 	
 	<div id="MenuItemSelectContent">
-		<?php		
-		
-		?>
+	loading
 	</div>	
 </div>

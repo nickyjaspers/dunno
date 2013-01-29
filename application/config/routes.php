@@ -54,6 +54,9 @@ $route['logoff'] = 'pages/logoff';
 //member
 $route['member/(:any)'] = 'memberpages/view/$1';
 
+//member content
+$route['member/myaccount'] = 'myaccount/view';
+
 //any
 $route['(:any)'] = 'pages/view/$1';
 
